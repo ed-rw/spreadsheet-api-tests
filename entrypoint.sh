@@ -1,7 +1,10 @@
 #!/bin/sh
 set -e
 
-cd tests/spreadsheetapi
+echo "PWD: ${PWD}"
+echo "SERVICE_BASE_URL: $1"
+
+cd /opt/tests/spreadsheetapi/
 
 export SERVICE_BASE_URL="$1"
 # NOTE: use python -m pytest to invoke pytest since it adds the current
