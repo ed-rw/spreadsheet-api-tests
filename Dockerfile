@@ -7,6 +7,6 @@ WORKDIR /opt/tests
 
 RUN chmod +x /opt/entrypoint.sh && \
     pip install pipenv && \
-    pipenv install
+    pipenv sync
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
