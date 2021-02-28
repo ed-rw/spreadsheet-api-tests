@@ -1,0 +1,11 @@
+name: 'spreadsheet-api-tests'
+description: 'Contract test suite for the spreadsheet api'
+inputs:
+  service-base-url:  # id of input
+    description: 'Base URL to use to access the service'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.service-base-url }}
