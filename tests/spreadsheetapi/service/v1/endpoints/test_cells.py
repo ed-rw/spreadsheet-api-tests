@@ -72,6 +72,30 @@ class TestCellEndpoint:
 
         assert resp.status_code == 404
 
+    def test_create_cell_422_invalid_name_A0(self):
+
+        resp = requests.put(f"{SERVICE_BASE_URL}/v1/spreadsheets/doesnt_exist"
+                             f"/cells/A0",
+                             json={'value': 'dummy value', 'type': 'literal'})
+
+        assert resp.status_code == 422
+
+    def test_create_cell_422_invalid_name_1B(self):
+
+        resp = requests.put(f"{SERVICE_BASE_URL}/v1/spreadsheets/doesnt_exist"
+                             f"/cells/1B",
+                             json={'value': 'dummy value', 'type': 'literal'})
+
+        assert resp.status_code == 422
+
+    def test_create_cell_422_invalid_type(self):
+
+        resp = requests.put(f"{SERVICE_BASE_URL}/v1/spreadsheets/doesnt_exist"
+                             f"/cells/1B",
+                             json={'value': 'dummy value', 'type': 'badtype'})
+
+        assert resp.status_code == 422
+
     def test_create_cell(self, new_spreadsheet_fixture):
         spreadsheet_id = new_spreadsheet_fixture("new_spreadsheet").json()['id']
 
