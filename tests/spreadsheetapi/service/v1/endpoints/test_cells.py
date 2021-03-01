@@ -6,20 +6,7 @@ import pytest
 import requests
 
 from const import SERVICE_BASE_URL
-from utils import new_spreadsheet_fixture
-
-
-def create_cell(spreadsheet_id, cell_name, cell_value):
-    resp = requests.put(f"{SERVICE_BASE_URL}/v1/spreadsheets"
-                        f"/{spreadsheet_id}/cells/{cell_name}",
-                        json={'value': cell_value, 'type': 'literal'})
-    return resp
-
-
-def delete_cell(spreadsheet_id, cell_name):
-    resp = requests.delete(f"{SERVICE_BASE_URL}/v1/spreadsheets"
-                           f"/{spreadsheet_id}/cells/{cell_name}")
-    return resp
+from utils import new_spreadsheet_fixture, create_cell, delete_cell
 
 
 @pytest.fixture(scope="class")
